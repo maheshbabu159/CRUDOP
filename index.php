@@ -1,4 +1,5 @@
 <?php
+ob_start();
 require "ParseConfig.php";
 include_once 'header.php';
 include_once 'user-model.php';
@@ -17,9 +18,8 @@ if (isset($_POST['loginButtonClick'])) {
         
     } else {
 
-        $resutlDictionary = $rootDictionary['result'];
-        header("Location:home.php");    
-        die();
+        //$resutlDictionary = $rootDictionary['result'];
+        header("Location:home.php");  
     }
 }
 ?>
