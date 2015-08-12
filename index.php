@@ -8,14 +8,31 @@ if (isset($_POST['loginButtonClick'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $responseDictionary =  UserModel::loginCheck($username,$password);
-    $json = json_decode($responseDictionary, true);
-    echo $json['result']['username'];
+    $response =  UserModel::loginCheck($username,$password);
+    $rootDictionary = json_decode($response, true);
+    
+    if ($rootDictionary['code'] == 141) {
+
+         $message = $rootDictionary['error'];
+        
+    } else {
+
+        $resutlDictionary = $rootDictionary['result'];
+        header("Location:home.php");    
+        die();
+    }
 }
 ?>
 
 <div class="clearfix"></div><br />
-
+<div class="container">
+    <?php
+    if (isset($message)) {
+        
+        echo '<div class="alert alert-danger">'.$message.'</div>';
+    }
+    ?>
+</div>
 <div class="container">
     <form method='post'>
         <table class='table table-bordered'>
