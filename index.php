@@ -1,59 +1,44 @@
 <?php
 require "ParseConfig.php";
-include_once 'header.php'; 
+include_once 'header.php';
+include_once 'user-model.php';
 
-use Parse\ParseQuery;
+if (isset($_POST['loginButtonClick'])) {
+    
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-$query = new ParseQuery("_User");
-$usersList = $query->find();
-
+    $responseDictionary =  UserModel::loginCheck($username,$password);
+    $json = json_decode($responseDictionary, true);
+    echo $json['result']['username'];
+}
 ?>
-
-<div class="clearfix"></div>
-
-<div class="container">
-    <a href="add-data.php" class="btn btn-large btn-info"><i class="glyphicon glyphicon-plus"></i> &nbsp; Add Records</a>
-</div>
 
 <div class="clearfix"></div><br />
 
 <div class="container">
-    <table class='table table-bordered table-responsive'>
-        <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>E - mail ID</th>
-            <th>Contact No</th>
-            <th colspan="2" align="center">Actions</th>
-        </tr>
-
-        <?php for ($i = 0; $i < count($usersList); $i++) { $userObject = $usersList[$i];?>        
+    <form method='post'>
+        <table class='table table-bordered'>
             <tr>
-                <th>#</th>
-                <th><?php echo $userObject->get("firstName"); ?></th>
-                <th><?php echo $userObject->get("lastName"); ?></th>
-                <th><?php echo $userObject->get("email"); ?></th>
-                <th><?php echo $userObject->get("phoneNumber"); ?></th>
-                <th>
-                    <a href="edit-data.php?firstTime=true" class="btn btn-large btn-warning"><i class="glyphicon glyphicon-pencil"></i> &nbsp;Edit</a>
-                    <a href="delete.php?objectId=<?php echo $userObject->get("objectId");?>" class="btn btn-large btn-danger"><i class="glyphicon glyphicon-remove"></i> &nbsp;Delete</a>
-                </th>
-                
-            </tr>        
-        <?php } ?>
-        <tr>
-            <td colspan="7" align="center">
-                <div class="pagination-wrap">
+                <td>Username</td>
+                <td><input type='text' name='username' class='form-control' value="" required></td>
+            </tr>
 
-                </div>
-            </td>
-        </tr>
+            <tr>
+                <td>Password</td>
+                <td><input type='password' name='password' class='form-control' value="" required></td>
+            </tr>
 
-    </table>
-
-
+            <tr>
+                <td colspan="2" align="center">
+                    <button type="submit" class="btn btn-primary" name="loginButtonClick">
+                        <span class="glyphicon glyphicon-edit"></span>  Login
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </form>
 </div>
 
-<?php
-include_once 'footer.php';
+<?php include_once 'footer.php'; ?>
+

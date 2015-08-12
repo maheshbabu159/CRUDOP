@@ -5,14 +5,13 @@ include_once 'header.php';
 
 use Parse\ParseUser;
 
-$objectId = "aadFZlyqSt";
+$objectId = $_GET['$objectId'];
 
 $query = ParseUser::query();
 
 $userObject = $query->get($objectId);
 
 if (isset($_POST['btn-update'])) {
-
 
     $username = $_POST['username'];
     $fname = $_POST['first_name'];
@@ -31,10 +30,7 @@ if (isset($_POST['btn-update'])) {
         $user->set("phoneNumber", $contact);
         $user->set("password", "1234");
         $user->save();
-
-        $msg = "<div class='alert alert-info'>
-				<strong>WOW!</strong> Record was updated successfully <a href='index.php'>HOME</a>!
-				</div>";
+        
     } catch (ParseException $ex) {
         // Show the error message somewhere and let the user try again.
         $msg = "<div class='alert alert-warning'>
@@ -55,13 +51,9 @@ if (isset($_POST['btn-update'])) {
 </div>
 
 <div class="clearfix"></div><br />
-
 <div class="container">
-
     <form method='post'>
-
         <table class='table table-bordered'>
-
             <tr>
                 <td>First Name</td>
                 <td><input type='text' name='first_name' class='form-control' value="<?php echo $userObject->get("firstName"); ?>" required></td>
@@ -92,14 +84,10 @@ if (isset($_POST['btn-update'])) {
                         <span class="glyphicon glyphicon-edit"></span>  Update this Record
                     </button>
                     <a href="index.php" class="btn btn-large btn-success"><i class="glyphicon glyphicon-backward"></i> &nbsp; CANCEL</a>
-               
                 </td>
             </tr>
-
         </table>
     </form>
-
-
 </div>
 
 <?php include_once 'footer.php'; ?>

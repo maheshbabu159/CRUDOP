@@ -31,14 +31,13 @@ if (isset($_POST['btn-save'])) {
     $user->set("role", $role);
 
     try {
-        $user->signUp();
-        header("Location: add-data.php?inserted");
-        echo '<script language="javascript">';
-        echo 'alert("New Record successfully added")';
-        echo '</script>';
+        //$user->signUp();
+        
+        echo '<script type="text/javascript">alert("Added new user successfully.")</script>';
+
     } catch (ParseException $ex) {
         // Show the error message somewhere and let the user try again.
-        header("Location: add-data.php?failure");
+        echo '<script type="text/javascript">alert("Error while creating user.")</script>';
     }
 }
 ?>
