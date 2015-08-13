@@ -49,7 +49,7 @@ if (isset($_POST['loginButtonClick'])) {
             <tr>
                 <td colspan="2" align="center">
                     <button type="submit" class="btn btn-primary" name="loginButtonClick">
-                        <span class="glyphicon glyphicon-edit"></span>  Login
+                        <span class="glyphicon glyphicon-log-in"></span>  Login
                     </button>
                 </td>
             </tr>

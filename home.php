@@ -17,6 +17,7 @@ $usersList = $query->find();
 <div class="clearfix"></div><br />
 
 <div class="container">
+
     <table class='table table-bordered table-responsive'>
         <tr>
             <th>#</th>
@@ -28,9 +29,10 @@ $usersList = $query->find();
         </tr>
 
         <?php for ($i = 0; $i < count($usersList); $i++) {
-            $userObject = $usersList[$i]; ?>        
+            $userObject = $usersList[$i];
+            ?>        
             <tr>
-                <th><?php echo $i+1; ?></th>
+                <th><?php echo $i + 1; ?></th>
                 <th><?php echo $userObject->get("firstName"); ?></th>
                 <th><?php echo $userObject->get("lastName"); ?></th>
                 <th><?php echo $userObject->get("email"); ?></th>
@@ -51,6 +53,13 @@ $usersList = $query->find();
 
     </table>
 </div>
-
+<div class="container">
+    <ul class="nav nav-pills nav-stacked" role="tablist">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">HTML</a></li>
+        <li><a href="#">CSS</a></li>
+        <li><a href="#">About</a></li>        
+    </ul>
+</div>
 <?php
 include_once 'footer.php';
