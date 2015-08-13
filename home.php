@@ -7,7 +7,34 @@ use Parse\ParseQuery;
 $query = new ParseQuery("_User");
 $usersList = $query->find();
 ?>
-
+<div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="sidebar-nav">
+                    <div class="navbar navbar-default" role="navigation">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <span class="visible-xs navbar-brand">Sidebar menu</span>
+                        </div>
+                        <div class="navbar-collapse collapse sidebar-navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#">Menu Item 1</a></li>
+                                <li><a href="#">Menu Item 2</a></li>
+                                <li><a href="#">Menu Item 3</a></li>
+                                <li><a href="#">Menu Item 4</a></li>
+                                <li><a href="#">Reviews <span class="badge">1,118</span></a></li>
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 <div class="clearfix"></div>
 
 <div class="container">
@@ -17,7 +44,7 @@ $usersList = $query->find();
 <div class="clearfix"></div><br />
 
 <div class="container">
-
+    
     <table class='table table-bordered table-responsive'>
         <tr>
             <th>#</th>
@@ -53,13 +80,6 @@ $usersList = $query->find();
 
     </table>
 </div>
-<div class="container">
-    <ul class="nav nav-pills nav-stacked" role="tablist">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">HTML</a></li>
-        <li><a href="#">CSS</a></li>
-        <li><a href="#">About</a></li>        
-    </ul>
-</div>
+
 <?php
 include_once 'footer.php';
