@@ -10,8 +10,14 @@ require_once('HTTPRequest.php');
 class  UserModel{
     /* Member variables */
      public static function loginCheck($username,$password){
-        $postData = array('username' => $username,'password' => $password);
-        $response = HTTPRequest::sendRequest("loginCheck",json_encode($postData));
+        $postData = array('username' => $username,'password' => $password,'method' => 'loginCheck');
+        $response = HTTPRequest::sendRequest(json_encode($postData));
+        return $response;
+    }
+     /* Member variables */
+     public static function getAllUsers(){
+        $postData = array('method' => 'getAllUsers');
+        $response = HTTPRequest::sendRequest(json_encode($postData));
         return $response;
     }
 }

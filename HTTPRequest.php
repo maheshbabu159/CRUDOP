@@ -15,10 +15,10 @@ class HTTPRequest {
         
     }
 
-    public static function sendRequest($requestMethod, $objectData) {
+    public static function sendRequest($objectData) {
 
         $request = curl_init();
-        curl_setopt($request, CURLOPT_URL, REQUEST_URL . $requestMethod);
+        curl_setopt($request, CURLOPT_URL, REQUEST_URL);
         curl_setopt($request, CURLOPT_PORT, 443);
         curl_setopt($request, CURLOPT_POST, 1);
         curl_setopt($request, CURLOPT_POSTFIELDS, $objectData);

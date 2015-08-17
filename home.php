@@ -1,11 +1,20 @@
 <?php
-require "ParseConfig.php";
+ob_start();
 include_once 'header.php';
+include_once 'user-model.php';
 
-use Parse\ParseQuery;
+$response = UserModel::getAllUsers();
 
-$query = new ParseQuery("_User");
-$usersList = $query->find();
+$rootDictionary = json_decode($response, true);
+
+if ($rootDictionary['code'] == 141) {
+
+    $message = $rootDictionary['error'];
+    
+} else {
+    
+    $usersList = $rootDictionary['result'];
+}
 ?>
 <div class="container">
         <div class="row">
@@ -55,18 +64,16 @@ $usersList = $query->find();
             <th colspan="2" align="center">Actions</th>
         </tr>
 
-        <?php for ($i = 0; $i < count($usersList); $i++) {
-            $userObject = $usersList[$i];
-            ?>        
+        <?php foreach ($usersList as $userObject) { ?>        
             <tr>
                 <th><?php echo $i + 1; ?></th>
-                <th><?php echo $userObject->get("firstName"); ?></th>
-                <th><?php echo $userObject->get("lastName"); ?></th>
-                <th><?php echo $userObject->get("email"); ?></th>
-                <th><?php echo $userObject->get("phoneNumber"); ?></th>
+                <th><?php echo $userObject['firstName']; ?></th>
+                <th><?php echo $userObject["lastName"]; ?></th>
+                <th><?php echo $userObject["email"]; ?></th>
+                <th><?php echo $userObject["phoneNumber"]; ?></th>
                 <th>
-                    <a href="edit-data.php?$objectId=<?php echo $userObject->getObjectId() ?>" class="btn btn-large btn-warning"><i class="glyphicon glyphicon-pencil"></i> &nbsp;Edit</a>
-                    <a href="delete.php?objectId=<?php echo $userObject->getObjectId() ?>" class="btn btn-large btn-danger"><i class="glyphicon glyphicon-remove"></i> &nbsp;Delete</a>
+                    <a href="edit-data.php?$objectId=<?php echo $userObject['objectId']; ?>" class="btn btn-large btn-warning"><i class="glyphicon glyphicon-pencil"></i> &nbsp;Edit</a>
+                    <a href="delete.php?objectId=<?php echo $userObject['objectId']; ?>" class="btn btn-large btn-danger"><i class="glyphicon glyphicon-remove"></i> &nbsp;Delete</a>
                 </th>
             </tr>        
         <?php } ?>

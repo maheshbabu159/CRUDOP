@@ -1,6 +1,5 @@
 <?php
 ob_start();
-require "ParseConfig.php";
 include_once 'header.php';
 include_once 'user-model.php';
 
