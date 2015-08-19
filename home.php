@@ -16,35 +16,19 @@ if ($rootDictionary['code'] == 141) {
     $usersList = $rootDictionary['result'];
 }
 ?>
+
 <div class="container">
         <div class="row">
-            <div class="col-sm-3">
-                <div class="sidebar-nav">
-                    <div class="navbar navbar-default" role="navigation">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <span class="visible-xs navbar-brand">Sidebar menu</span>
-                        </div>
-                        <div class="navbar-collapse collapse sidebar-navbar-collapse">
-                            <ul class="nav navbar-nav">
-                                <li class="active"><a href="#">Menu Item 1</a></li>
-                                <li><a href="#">Menu Item 2</a></li>
-                                <li><a href="#">Menu Item 3</a></li>
-                                <li><a href="#">Menu Item 4</a></li>
-                                <li><a href="#">Reviews <span class="badge">1,118</span></a></li>
-                            </ul>
-                        </div><!--/.nav-collapse -->
-                    </div>
-                </div>
-            </div>
+           <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
+                <li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
+                <li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
+                <li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+            </ul>
         </div>
     </div>
 <div class="clearfix"></div>
+</br>
 
 <div class="container">
     <a href="add-data.php" class="btn btn-large btn-info"><i class="glyphicon glyphicon-plus"></i> &nbsp; Add Records</a>
